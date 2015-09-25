@@ -1,9 +1,6 @@
 /bin/
 /.settings/
 /.DS_Store
-/target/maven*
-/target/surefire*
-/target/dependency*
-/target/class*
+/target/
 /.classpath
 /.project

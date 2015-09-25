@@ -66,7 +66,7 @@ The return of this API will be around below
  ]
 ```
 
-Then, after parse the result, a csv file will be created with the columns
+Then, after parsing the result, a csv file will be created with the columns
 _id, name, type, latitude,longitude
 
 ## Usage

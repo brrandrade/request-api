@@ -100,10 +100,13 @@ Main class
 @PropertySource( { "classpath:application.properties" } )
 public class Application {
 
+	private static AnnotationConfigApplicationContext ctx;
+
 	public static void main( String[] args ) {
 
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext( Application.class );
+		ctx = new AnnotationConfigApplicationContext( Application.class );
 		ctx.getBean( RequestApi.class ).run( args );
+
 	}
 
 	@Bean

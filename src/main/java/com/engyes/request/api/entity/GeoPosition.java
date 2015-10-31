@@ -47,20 +47,24 @@ public class GeoPosition implements Serializable {
 	public boolean equals( final Object other ) {
 		if ( !( other instanceof GeoPosition ) ) return false;
 		GeoPosition castOther = (GeoPosition)other;
-		return new EqualsBuilder().append( latitude, castOther.latitude ).append( longitude,
-				castOther.longitude ).isEquals();
+		return new EqualsBuilder()	.append( latitude, castOther.latitude )
+									.append( longitude, castOther.longitude )
+									.isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder( -2046549587, -1492543485 ).append( latitude ).append(
-				longitude ).toHashCode();
+		return new HashCodeBuilder( -2046549587, -1492543485 )	.append( latitude )
+																.append( longitude )
+																.toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder( this ).append( "id", id ).append( "latitude", latitude ).append(
-				"longitude", longitude ).toString();
+		return new ToStringBuilder( this )	.append( "id", id )
+											.append( "latitude", latitude )
+											.append( "longitude", longitude )
+											.toString();
 	}
 
 }

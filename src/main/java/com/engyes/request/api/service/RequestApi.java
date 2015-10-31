@@ -7,7 +7,8 @@ import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ import com.sun.jersey.api.json.JSONConfiguration;
 @Service
 public class RequestApi {
 
-	private static final Logger log = Logger.getLogger( RequestApi.class );
+	private static final Logger log = LoggerFactory.getLogger( RequestApi.class );
 
 	String city;
 	@Value( "${csv.split}" )

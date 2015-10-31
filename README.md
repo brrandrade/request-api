@@ -9,13 +9,10 @@
  - Mockito 
  - Junit4
  - Commons lang 
- - Log4j
-
-The API used in this project 
-http://api.goeuro.com/api/v2/position/suggest/en/
+ - Slf4 over log4j
 
 After receiving "Berlin" via command line, the API will be
-http://api.goeuro.com/api/v2/position/suggest/en/Berlin
+http://.../Berlin
 
 The return of this API will be around below
 

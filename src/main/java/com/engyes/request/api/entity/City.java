@@ -16,32 +16,32 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 public class City implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@JsonProperty("_id")
+
+	@JsonProperty( "_id" )
 	private Long id;
-	@JsonProperty("key")
+	@JsonProperty( "key" )
 	private Object key;
-	@JsonProperty("name")
+	@JsonProperty( "name" )
 	private String name;
-	@JsonProperty("fullName")
+	@JsonProperty( "fullName" )
 	private String fullName;
-	@JsonProperty("iata_airport_code")
+	@JsonProperty( "iata_airport_code" )
 	private Object iataAirportCode;
-	@JsonProperty("type")
+	@JsonProperty( "type" )
 	private String type;
-	@JsonProperty("country")
+	@JsonProperty( "country" )
 	private String country;
-	@JsonProperty("geo_position")
+	@JsonProperty( "geo_position" )
 	private GeoPosition geoPosition;
-	@JsonProperty("locationId")
+	@JsonProperty( "locationId" )
 	private Integer locationId;
-	@JsonProperty("inEurope")
+	@JsonProperty( "inEurope" )
 	private Boolean inEurope;
-	@JsonProperty("countryCode")
+	@JsonProperty( "countryCode" )
 	private String countryCode;
-	@JsonProperty("coreCountry")
+	@JsonProperty( "coreCountry" )
 	private Boolean coreCountry;
-	@JsonProperty("distance")
+	@JsonProperty( "distance" )
 	private Object distance;
 
 	public Long getId() {
@@ -152,32 +152,54 @@ public class City implements Serializable {
 	public boolean equals( final Object other ) {
 		if ( !( other instanceof City ) ) return false;
 		City castOther = (City)other;
-		return new EqualsBuilder().append( key, castOther.key ).append( name, castOther.name ).append(
-				fullName, castOther.fullName ).append( iataAirportCode, castOther.iataAirportCode ).append(
-						type, castOther.type ).append( country, castOther.country ).append( geoPosition,
-								castOther.geoPosition ).append( locationId, castOther.locationId ).append(
-										inEurope, castOther.inEurope ).append( countryCode,
-												castOther.countryCode ).append( coreCountry,
-														castOther.coreCountry ).append( distance,
-																castOther.distance ).isEquals();
+		return new EqualsBuilder()	.append( key, castOther.key )
+									.append( name, castOther.name )
+									.append( fullName, castOther.fullName )
+									.append( iataAirportCode, castOther.iataAirportCode )
+									.append( type, castOther.type )
+									.append( country, castOther.country )
+									.append( geoPosition, castOther.geoPosition )
+									.append( locationId, castOther.locationId )
+									.append( inEurope, castOther.inEurope )
+									.append( countryCode, castOther.countryCode )
+									.append( coreCountry, castOther.coreCountry )
+									.append( distance, castOther.distance )
+									.isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder( -2116639697, 354678893 ).append( key ).append( name ).append(
-				fullName ).append( iataAirportCode ).append( type ).append( country ).append(
-						geoPosition ).append( locationId ).append( inEurope ).append( countryCode ).append(
-								coreCountry ).append( distance ).toHashCode();
+		return new HashCodeBuilder( -2116639697, 354678893 ).append( key )
+															.append( name )
+															.append( fullName )
+															.append( iataAirportCode )
+															.append( type )
+															.append( country )
+															.append( geoPosition )
+															.append( locationId )
+															.append( inEurope )
+															.append( countryCode )
+															.append( coreCountry )
+															.append( distance )
+															.toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder( this ).append( "id", id ).append( "key", key ).append( "name",
-				name ).append( "fullName", fullName ).append( "iataAirportCode", iataAirportCode ).append(
-						"type", type ).append( "country", country ).append( "geoPosition",
-								geoPosition ).append( "locationId", locationId ).append( "inEurope",
-										inEurope ).append( "countryCode", countryCode ).append( "coreCountry",
-												coreCountry ).append( "distance", distance ).toString();
+		return new ToStringBuilder( this )	.append( "id", id )
+											.append( "key", key )
+											.append( "name", name )
+											.append( "fullName", fullName )
+											.append( "iataAirportCode", iataAirportCode )
+											.append( "type", type )
+											.append( "country", country )
+											.append( "geoPosition", geoPosition )
+											.append( "locationId", locationId )
+											.append( "inEurope", inEurope )
+											.append( "countryCode", countryCode )
+											.append( "coreCountry", coreCountry )
+											.append( "distance", distance )
+											.toString();
 	}
 
 }

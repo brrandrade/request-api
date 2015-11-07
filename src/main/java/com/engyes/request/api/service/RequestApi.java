@@ -22,51 +22,110 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.json.JSONConfiguration;
 
+/**
+ * Request the API and proccess the information, also it generates a file 
+ * with information received from the API
+ *
+ * @author  Bruno Andrade
+ */
 @Service
 public class RequestApi {
 
+	/** The Constant log. */
 	private static final Logger log = LoggerFactory.getLogger( RequestApi.class );
 
+	/** The city. */
 	String city;
+	
+	/** The csv split. */
 	@Value( "${csv.split}" )
 	String csvSplit;
+	
+	/** The header. */
 	@Value( "${csv.header}" )
 	String header;
+	
+	/** The url. */
 	@Value( "${api.url}" )
 	private String url;
 
+	/** The Constant STATUS_OK. */
 	public final static int STATUS_OK = 0;
+	
+	/** The Constant STATUS_NOK. */
 	public final static int STATUS_NOK = 1;
+	
+	/** The Constant STATUS_URL_NOK. */
 	public final static int STATUS_URL_NOK = 2;
+	
+	/** The Constant STATUS_FILE_ERROR. */
 	public final static int STATUS_FILE_ERROR = 3;
 
+	/** The status. */
 	private int status = 1;
+	
+	/** The filename. */
 	private String filename;
 
+	/**
+	 * Gets the status.
+	 *
+	 * @return the status
+	 */
 	public int getStatus() {
 		return status;
 	}
 
+	/**
+	 * Sets the status.
+	 *
+	 * @param status the new status
+	 */
 	public void setStatus( int status ) {
 		this.status = status;
 	}
 
+	/**
+	 * Gets the filename.
+	 *
+	 * @return the filename
+	 */
 	public String getFilename() {
 		return filename;
 	}
 
+	/**
+	 * Sets the filename.
+	 *
+	 * @param filename the new filename
+	 */
 	public void setFilename( String filename ) {
 		this.filename = filename;
 	}
 
+	/**
+	 * Gets the url.
+	 *
+	 * @return the url
+	 */
 	public String getUrl() {
 		return url;
 	}
 
+	/**
+	 * Sets the url.
+	 *
+	 * @param url the new url
+	 */
 	public void setUrl( String url ) {
 		this.url = url;
 	}
 
+	/**
+	 * Run.
+	 *
+	 * @param args the city desired to process the information
+	 */
 	public void run( String[] args ) {
 		try {
 
@@ -104,6 +163,12 @@ public class RequestApi {
 
 	}
 
+	/**
+	 * Process url.
+	 *
+	 * @return the client response
+	 * @throws Exception the exception
+	 */
 	private ClientResponse processUrl() throws Exception {
 		ClientConfig clientConfig = new DefaultClientConfig();
 		clientConfig.getFeatures().put( JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE );
@@ -129,11 +194,24 @@ public class RequestApi {
 
 	}
 
+	/**
+	 * Creates the web resource.
+	 *
+	 * @param client the client
+	 * @return the web resource
+	 */
 	protected WebResource createWebResource( Client client ) {
 		WebResource webResource = client.resource( getUrl() + city );
 		return webResource;
 	}
 
+	/**
+	 * Creates the file.
+	 *
+	 * @param cities the cities
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws UnsupportedEncodingException the unsupported encoding exception
+	 */
 	private void createFile( List<City> cities ) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter( getFilename(), "UTF-8" );
 		writer.println( header );

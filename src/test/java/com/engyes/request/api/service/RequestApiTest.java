@@ -74,6 +74,12 @@ public class RequestApiTest {
 
 	@Test
 	public void processErrorFile() throws Exception {
+		doReturn( wr ).when( requestApi ).createWebResource( org.mockito.Matchers.any( Client.class ) );
+		InBoundHeaders headers = fixture.createHeaders();
+		MessageBodyWorkers workers = fixture.createWorkers();
+		response = new ClientResponse( 200, headers,
+				new ByteArrayInputStream( fixture.getContent().getBytes() ), workers );
+		doReturn( response ).when( wr ).get( ClientResponse.class );
 		doReturn( "\\\\////////------" ).when( requestApi ).getFilename();
 		requestApi.run( fixture.createArgs() );
 		assertEquals( requestApi.getStatus(), RequestApi.STATUS_FILE_ERROR );
